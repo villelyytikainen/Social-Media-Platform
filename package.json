@@ -1,0 +1,17 @@
+{
+  "name": "social-media-project",
+  "version": "1.0.0",
+  "description": "Fullstack Social media application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Ville Lyytikäinen",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.18.3",
+    "mongoose": "^8.2.2"
+  }
+}
