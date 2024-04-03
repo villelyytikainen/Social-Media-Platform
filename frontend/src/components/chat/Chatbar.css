@@ -1,0 +1,20 @@
+#chatbar{
+    /* position:absolute;
+    right: 0;
+    top: 0; */
+    height: 100vh;
+    width: 150px;
+    background-color: black;
+    color: white;
+}
+
+#chat-user-list{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

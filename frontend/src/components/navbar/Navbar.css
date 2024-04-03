@@ -1,0 +1,23 @@
+#navbar{
+    /* position:absolute;
+    left: 0;
+    top: 0; */
+    background-color: black;
+    height: 100vh;
+    margin:0;
+    width: 200px;
+    color: white;
+}
+
+.navbar-minimized{
+    width: 50px;
+}
+
+#navbar-list{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+}
