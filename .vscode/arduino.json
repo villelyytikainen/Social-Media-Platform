@@ -1,0 +1,5 @@
+{
+    "port": "COM4",
+    "board": "arduino:avr:uno",
+    "sketch": "c:\\Users\\corps\\Documents\\PlatformIO\\Projects\\240403-192917-uno\\src\\sketch_apr3a.ino"
+}
