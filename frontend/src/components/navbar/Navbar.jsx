@@ -1,6 +1,11 @@
 import "./Navbar.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Routes, Route } from "react-router-dom";
+import Home from "../home/HomePage";
+import Profile from "../profile/ProfilePage";
+import Messages from "../messages/MessagesPage";
+import Friends from "../friends/FriendsPage";
+import Settings from "../settings/SettingsPage";
 
 const Navbar = () => {
     const [loggedIn, setLoggedIn] = useState(true);
@@ -17,23 +22,35 @@ const Navbar = () => {
                     Small
                 </button>
                 <ul id='navbar-list'>
-                    <li>
-                        <Link to='/'>Feed</Link>
+                    <li className='nav-item'>
+                        <Link to='/' className='nav-link'>
+                            Home
+                        </Link>
                     </li>
-                    <li>
-                        <Link to='/login'>Profile</Link>
+                    <li className='nav-item'>
+                        <Link to='/profile' className='nav-link'>
+                            Profile
+                        </Link>
                     </li>
-                    <li>
-                        <Link to='/signup'>Messages</Link>
+                    <li className='nav-item'>
+                        <Link to='/messages' className='nav-link'>
+                            Messages
+                        </Link>
                     </li>
-                    <li>
-                        <Link to='/signup'>Friends</Link>
+                    <li className='nav-item'>
+                        <Link to='/friends' className='nav-link'>
+                            Friends
+                        </Link>
                     </li>
-                    <li>
-                        <Link to='/signup'>Settings</Link>
+                    <li className='nav-item'>
+                        <Link to='/settings' className='nav-link'>
+                            Settings
+                        </Link>
                     </li>
-                    <li>
-                        <Link to='/signup'>Log Out</Link>
+                    <li className='nav-item'>
+                        <Link to='/logout' className='nav-link'>
+                            Log Out
+                        </Link>
                     </li>
                 </ul>
             </nav>

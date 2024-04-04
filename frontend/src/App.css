@@ -17,3 +17,7 @@ html, body{
     flex-direction: row;
     text-align: center;
 }
+
+#App > *{
+    width: 100%;
+}

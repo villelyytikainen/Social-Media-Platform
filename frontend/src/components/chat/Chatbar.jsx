@@ -2,7 +2,7 @@ import "./Chatbar.css";
 import { useState } from "react";
 
 const Chatbar = () => {
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(true);
     const [minimized, setMinimized] = useState(false);
 
     const toggleSidebar = () => {
