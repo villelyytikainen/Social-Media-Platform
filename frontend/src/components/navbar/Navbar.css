@@ -3,21 +3,36 @@
     left: 0;
     top: 0; */
     background-color: black;
-    height: 100vh;
     margin:0;
+    padding: 0;
     width: 200px;
     color: white;
+    font-size: 2rem;
+}
+
+
+#navbar-list{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+.nav-item{
+    padding: 1rem;
 }
 
 .navbar-minimized{
     width: 50px;
 }
 
-#navbar-list{
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    list-style-type: none;
+.svg{
+    fill:white;
+    width: 40px;
+    height: 40px;
 }

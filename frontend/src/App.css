@@ -2,22 +2,39 @@
     box-sizing: border-box;
 }
 
+html, body{
+    margin: 0;
+    padding: 0;
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
+}
+
+hr{
+    margin: 2rem 0;
+}
+
+h1{
+    font-size: 3rem;
+}
+
+h2{
+    font-size: 2rem;
+}
+
+p{
+    font-size: 1.5rem;
+}
+
 a, a:link, a:visited{
     color: white;
     text-decoration: none;
 }
 
-html, body{
-    margin: 0;
-    padding: 0;
-}
 
 #App{
     display: flex;
     flex-direction: row;
     text-align: center;
-}
-
-#App > *{
-    width: 100%;
+    margin: 0;
+    padding: 0;
 }

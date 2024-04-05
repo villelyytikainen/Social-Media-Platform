@@ -1,3 +1,24 @@
+#profile-page{
+
+    max-width: 1000px;
+    margin:auto;
+}
+
+#profile-info-container{
+    display: flex;
+    flex-direction: row;
+}
+
+#profile-info-container > *{
+    margin: 0 1rem;
+}
+
 .profile-info{
-    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.profile-image{
+    width: 200px;
 }
