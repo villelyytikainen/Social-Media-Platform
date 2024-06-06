@@ -1,7 +1,16 @@
 import "./Profile.css";
-import Feed from "../feed/Feed";
+import Feed from "../Feed/Feed";
 
-const ProfilePage = () => {
+const ProfilePage = ({posts}) => {
+
+    //TODO: Check posts from users that are friends
+    //const friends = useState([]);
+    /*posts.map((post) => {
+        return friends.includes(post.profile_id);
+    })
+*/
+
+
     return (
         <section id='profile-page'>
             <h1>Name</h1>
@@ -16,7 +25,7 @@ const ProfilePage = () => {
                 </div>
             </div>
             <hr />
-            <Feed />
+            <Feed posts={posts}/>
         </section>
     );
 };

@@ -1,12 +1,12 @@
 #navbar{
-    /* position:absolute;
+    position:fixed;
     left: 0;
-    top: 0; */
-    background-color: black;
+    top: 0;
+    background-color: #282C34;
     margin:0;
     padding: 0;
     width: 200px;
-    color: white;
+    color: #f2faff;
     font-size: 2rem;
 }
 
@@ -20,7 +20,8 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background-color: black;
+    color: red;
+    background-color: #282C34;
 }
 
 .nav-item{

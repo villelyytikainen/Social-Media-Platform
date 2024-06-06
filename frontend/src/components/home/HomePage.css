@@ -1,4 +1,9 @@
 #home-page{
-    width: 100%;
+
+    align-items: center;
+    width: 100vw;
+    min-height: 100vh;
     padding: 2rem 20% 0 20%;
+    background-color: #f2faff;
+    color: #282c34;
 }

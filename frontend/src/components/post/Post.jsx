@@ -1,13 +1,23 @@
 import './Post.css';
 
-const Post = () => {
+const Post = ({id, profile_id, written_text, title, likes, created, updated}) => {
+
+    console.log("post ", id, profile_id, written_text, title, likes, created, updated)
+
     return (
-        <div id="post-container">
-            <div id="post-title"><h1>Title</h1></div>
-            <div id="post-content">
-                <p>Content</p>
+        <li id="post-container">
+            <div id="post-username-container">
+                <h2 id="post-name">{title}</h2>
+                <span id="post-username">@{profile_id}</span>
             </div>
-        </div>
+            <div id="post-content">
+                <p>{written_text}</p>
+                <span>{likes}</span>
+                <p>{created}</p>
+                <p>{updated}</p>
+
+            </div>
+        </li>
     );
 }
 

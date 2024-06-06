@@ -1,13 +1,21 @@
-import PostField from "../post/PostField";
-import Post from "../post/Post";
+import PostField from "../Postfield/PostField";
+import Post from "../Post/Post";
+import "./Feed.css";
 
-const Feed = () => {
+const Feed = ({ posts }) => {
+
+    console.log("feed ", posts)
+
     return (
-        <div>
+        <div id='feed-container'>
             <PostField />
-            <Post />
+            <ul id='feed-posts'>
+                {posts.map((post) => (
+                    <Post key={post.id} name={post.title} username={post.profile_id} content={post.written_text} liked={post.likes} created={post.created_at} updated={post.updated_at} />
+                ))}
+            </ul>
         </div>
     );
-}
+};
 
 export default Feed;

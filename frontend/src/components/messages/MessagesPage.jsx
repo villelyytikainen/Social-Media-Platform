@@ -1,7 +1,11 @@
+import Message from "./Message";
+
 const MessagesPage = () => {
     return (
         <section id="messages-page">
-            <p>Messages Page</p>
+            <ul id="messages-list">
+                <Message />
+            </ul>
         </section>
     );
 }

@@ -1,8 +1,19 @@
 #post-container{
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
-    max-width: 1000px;
-    height: 200px;
-    margin:auto;
+    border-bottom: 1px solid #34425a20;
+    width: 1000px;
+    width: 80%;
+    height: auto;
+    margin:2rem 0;
 }
+
+#post-username-container{
+
+    padding: 1rem 0;
+}
+
+#post-name{
+    margin: 0;
+}
+
