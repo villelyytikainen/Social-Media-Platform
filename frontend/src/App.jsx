@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/HomePage";
 import Chatbar from "./components/Chat/Chatbar";
@@ -6,7 +6,7 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import "./App.css";
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [token, setToken] = useState("");
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -27,16 +27,16 @@ function App() {
         setIsLoggedIn(true);
     };
 
-    if (!isLoggedIn) {
+    if (!token) {
         return (
             <section id='App'>
-                <LandingPage loginUser={handleLogin} />
+                <LandingPage loginUser={handleLogin} setToken={setToken} />
             </section>
         );
     } else {
         return (
             <section id='App'>
-                <Navbar isLoggedIn={isLoggedIn} />
+                <Navbar />
                 <Home posts={posts} />
                 <Chatbar />
             </section>

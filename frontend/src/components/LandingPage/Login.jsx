@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-const Login = ({ loginUser }) => {
+const Login = ({ loginUser, setToken }) => {
     const userRef = useRef();
     const errRef = useRef();
 
@@ -47,7 +47,7 @@ const Login = ({ loginUser }) => {
             if (response.ok) {
                 //Get token
                 console.log(resData);
-                loginUser();
+                setToken(resData.token)
             } else {
                 setErrMsg(resData.message);
             }
