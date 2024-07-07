@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-const Login = ({ loginUser, setToken }) => {
+const Login = ({ setToken }) => {
     const userRef = useRef();
     const errRef = useRef();
 
@@ -33,6 +33,8 @@ const Login = ({ loginUser, setToken }) => {
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData.entries());
 
+        console.log(endPoint)
+
         try {
             const response = await fetch(endPoint, {
                 method: "POST",
@@ -46,8 +48,7 @@ const Login = ({ loginUser, setToken }) => {
 
             if (response.ok) {
                 //Get token
-                console.log(resData);
-                setToken(resData.token)
+                setToken(resData.token);
             } else {
                 setErrMsg(resData.message);
             }
@@ -57,7 +58,7 @@ const Login = ({ loginUser, setToken }) => {
     };
 
     return (
-        <form action='/login' onSubmit={onSubmit} className='landing-page-form'>
+        <form action='/api/auth/login' onSubmit={onSubmit} className='landing-page-form'>
             <h1>Login</h1>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live='assertive'>
                 {errMsg}

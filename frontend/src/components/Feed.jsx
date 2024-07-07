@@ -1,6 +1,6 @@
-import PostField from "../Postfield/PostField";
-import Post from "../Post/Post";
-import "./Feed.css";
+import PostField from "./PostField";
+import Post from "./Post";
+import "./css/Feed.css";
 
 const Feed = ({ posts }) => {
 

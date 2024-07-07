@@ -3,7 +3,7 @@ Projektin ideana on toteuttaa sosiaalinen media jossa käyttäjän täytyy rekis
 # Arkkitehtuuri
 Sovellus koostuu kolmesta kerroksesta:
 - Käyttöliittymä (Frontend)
-- Sovelluslogiikka (Backend) 
+- Sovelluslogiikka (Backend)
 - Tietokanta.
 # Yksityiskohtainen suunnitelma
 ## Frontend
@@ -41,14 +41,14 @@ Sovellus koostuu kolmesta kerroksesta:
 		- Poista ystävä(t)
 	- Lisää ystävä
 	- Ystävät
-		- 
+		-
 - **Settings**
 	- Tilin asetukset
 		- Vaihda käyttäjätunnus
 		- Vaihda salasana
 		- Poista tili
 	- Ulkoasu **
-	- 
+	-
 - **Chat**
 	- Vastaanottajan nimi /w linkki profiiliin
 	- Ikkunan pienennys _
@@ -68,7 +68,6 @@ Applikaation reititys tapahtuu React routeria käyttäen.
 - /messages
 - /friends
 - /settings
-- /logout
 ### Tietojen hakeminen
 
 ## Backend

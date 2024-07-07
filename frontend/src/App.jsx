@@ -1,47 +1,36 @@
-import { useEffect, useState } from "react";
-import Navbar from "./components/Navbar/Navbar";
-import Home from "./components/Home/HomePage";
-import Chatbar from "./components/Chat/Chatbar";
-import LandingPage from "./components/LandingPage/LandingPage";
+import { useEffect, useState, useReducer } from "react";
+import Navbar from "./components/Navbar";
+import Home from "./components/HomePage";
+import Chatbar from "./components/Chatbar";
+import LandingPage from "./components/LandingPage";
 import "./App.css";
 
 function App() {
-    const [token, setToken] = useState("");
-    const [posts, setPosts] = useState([]);
-
-    useEffect(() => {
-        fetchPosts();
-    }, []);
-
-    const fetchPosts = async () => {
-        try {
-            const response = await fetch("/api/posts");
-            const data = await response.json();
-            setPosts(data);
-        } catch (error) {
-            console.error("Error fetching posts:", error);
+    const [authenticated, setAuthenticated] = useState(false);
+    const setToken = (token) => {
+        console.log(token);
+        if (!token) {
+            setAuthenticated(false);
+        } else {
+            setAuthenticated(true);
         }
     };
 
-    const handleLogin = () => {
-        setIsLoggedIn(true);
-    };
-
-    if (!token) {
+    if (!authenticated) {
         return (
             <section id='App'>
-                <LandingPage loginUser={handleLogin} setToken={setToken} />
-            </section>
-        );
-    } else {
-        return (
-            <section id='App'>
-                <Navbar />
-                <Home posts={posts} />
-                <Chatbar />
+                <LandingPage setToken={setToken} />
             </section>
         );
     }
+
+    return (
+        <section id='App'>
+            <Navbar />
+            <Home />
+            <Chatbar />
+        </section>
+    );
 }
 
 export default App;

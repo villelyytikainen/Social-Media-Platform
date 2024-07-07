@@ -3,7 +3,7 @@ const db = require("../database/postOperations");
 const getAllPosts = async (req, res, next) => {
     try {
         const posts = await db.getAllPosts();
-        res.json(posts);
+        res.status(200).json(posts);
     } catch (error) {
         next(error);
     }
@@ -11,16 +11,16 @@ const getAllPosts = async (req, res, next) => {
 
 const getPostById = async (req, res, next) => {
     try {
-        const post = await getPost(req.params.id);
-        res.json(post);
+        const post = await db.getPostById(req.params.id);
+        res.status(200).json(post);
     } catch (error) {
         next(error);
     }
 };
 
-const createPost = (req, res, next) => {
+const createPost = async (req, res, next) => {
     try {
-        const post = req.body;
+        const post = await db.createPost();
         res.status(201).json(post);
     } catch (error) {
         next(error);

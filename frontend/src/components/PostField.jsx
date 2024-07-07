@@ -1,4 +1,4 @@
-import "./PostField.css";
+import "./css/PostField.css";
 import { useState } from "react";
 //import {createPost} from "../../../../database/dbOperations";
 

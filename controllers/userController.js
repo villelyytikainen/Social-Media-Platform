@@ -1,6 +1,5 @@
 const db = require("../database/userOperations");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 
 const getAllUsers = async (req, res, next) => {
     try {
@@ -46,30 +45,8 @@ const createUser = async (req, res, next) => {
     }
 };
 
-const authenticateUser = async (req, res, next) => {
-    try {
-        const { username, password } = req.body;
-        const user = await db.getUserByUsername({ username });
-
-        if (!user.length) {
-            return res.status(404).json({ message: "User not found" });
-        }
-
-        if (bcrypt.compareSync(password, user[0].password)) {
-            const token = jwt.sign({ username }, process.env.SM_JWTTOKEN, { expiresIn: "1h" });
-            res.cookie("token", token, { httpOnly: true, secure: true, sameSite: "Strict" });
-            return res.status(200).json({ message: "User logged in", token: token });
-        } else {
-            return res.status(400).json({ message: "Invalid credentials" });
-        }
-    } catch (error) {
-        next(error);
-    }
-};
-
 module.exports = {
     getAllUsers,
     getUserById,
     createUser,
-    authenticateUser,
 };

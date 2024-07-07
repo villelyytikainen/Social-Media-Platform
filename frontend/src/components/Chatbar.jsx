@@ -1,4 +1,4 @@
-import "./Chatbar.css";
+import "./css/Chatbar.css";
 import { useState } from "react";
 import ChatUser from "./ChatUser";
 

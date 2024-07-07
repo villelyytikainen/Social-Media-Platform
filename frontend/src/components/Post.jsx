@@ -1,4 +1,4 @@
-import './Post.css';
+import './css/Post.css';
 
 const Post = ({id, profile_id, written_text, title, likes, created, updated}) => {
 

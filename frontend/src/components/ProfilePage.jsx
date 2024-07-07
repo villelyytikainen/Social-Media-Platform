@@ -1,5 +1,5 @@
-import "./Profile.css";
-import Feed from "../Feed/Feed";
+import "./css/Profile.css";
+import Feed from "./Feed";
 
 const ProfilePage = ({posts}) => {
 

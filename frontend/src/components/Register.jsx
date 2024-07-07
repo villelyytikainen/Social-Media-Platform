@@ -37,7 +37,7 @@ const Register = () => {
     };
 
     return (
-        <form action='/register' onSubmit={onSubmit} className='landing-page-form'>
+        <form action='/api/auth/register' onSubmit={onSubmit} className='landing-page-form'>
             <h1>Register</h1>
             <input type='text' name='name' value={state.name} onChange={onChange} placeholder='Name' id='name-input' />
             <input type='text' name='username' value={state.username} onChange={onChange} placeholder='Username' id='username-input' />

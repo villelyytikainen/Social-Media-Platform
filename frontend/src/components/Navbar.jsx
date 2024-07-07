@@ -1,4 +1,4 @@
-import "./Navbar.css";
+import "./css/Navbar.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -7,6 +7,19 @@ const Navbar = () => {
 
     const toggleSidebar = () => {
         setMinimized(!minimized);
+    };
+
+    const handleLogout = async () => {
+        try {
+            const response = await fetch("/api/auth/logout", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+        } catch (error) {
+            return error;
+        }
     };
 
     if (!minimized) {
@@ -42,8 +55,8 @@ const Navbar = () => {
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to='/logout' className='nav-link'>
-                            Log Out
+                        <Link onClick={handleLogout} className='nav-link'>
+                            Logout
                         </Link>
                     </li>
                 </ul>
@@ -92,7 +105,7 @@ const Navbar = () => {
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to='/logout' className='nav-link'>
+                        <Link onClick={handleLogout} className='nav-link'>
                             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' className='svg'>
                                 <path d='M12 2C6.48 2 2 6.48 2 12v5c0 .55.45 1 1 1s1-.45 1-1v-5c0-3.86 3.14-7 7-7s7 3.14 7 7v3h-2v-3c0-2.76-2.24-5-5-5s-5 2.24-5 5v5c0 .55.45 1 1 1s1-.45 1-1v-5c0-1.65 1.35-3 3-3s3 1.35 3 3v5c0 .55.45 1 1 1s1-.45 1-1v-5c0-5.52-4.48-10-10-10z' />
                             </svg>
