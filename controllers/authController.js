@@ -27,7 +27,7 @@ const authenticateUser = async (req, res, next) => {
 const createSession = async (req, res, next) => {
     try {
         sessionOp.createSession(req.body);
-        res.json({"message": "session created"})
+        res.json({ message: "session created" });
     } catch (error) {
         next(error);
     }
@@ -35,7 +35,7 @@ const createSession = async (req, res, next) => {
 
 const logoutUser = (req, res, next) => {
     try {
-        console.log("logout")
+        res.json({ message: "user logged out" });
     } catch (error) {
         next(error);
     }

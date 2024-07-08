@@ -5,7 +5,6 @@ const {logoutUser, authenticateUser, createSession} = require("../controllers/au
 authRouter.post("/register", createUser);
 authRouter.post("/login", authenticateUser);
 authRouter.post("/logout", logoutUser);
-
 authRouter.post("/test", createSession);
 
 module.exports = authRouter;

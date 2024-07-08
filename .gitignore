@@ -22,3 +22,5 @@ vendor/
 # Ignore temporary files
 *.tmp
 *.temp
+
+TODO.md
