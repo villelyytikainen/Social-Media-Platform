@@ -14,7 +14,7 @@ const authenticateUser = async (req, res, next) => {
 
         if (bcrypt.compareSync(password, user[0].password)) {
             const token = jwt.sign({ username }, process.env.SM_JWTTOKEN, { expiresIn: "1h" });
-            res.cookie("token", token, { httpOnly: true, secure: true, sameSite: "Strict" });
+            res.cookie("token", token);
             return res.status(200).json({ message: "User logged in", token: token });
         } else {
             return res.status(400).json({ message: "Invalid credentials" });
@@ -35,6 +35,7 @@ const createSession = async (req, res, next) => {
 
 const logoutUser = (req, res, next) => {
     try {
+        console.log("logout")
     } catch (error) {
         next(error);
     }

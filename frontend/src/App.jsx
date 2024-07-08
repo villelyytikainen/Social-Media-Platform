@@ -7,6 +7,12 @@ import "./App.css";
 
 function App() {
     const [authenticated, setAuthenticated] = useState(false);
+
+    useEffect(() => {
+        const cookies = document.cookie;
+        setToken(cookies.split("=")[1]);
+    });
+
     const setToken = (token) => {
         console.log(token);
         if (!token) {
