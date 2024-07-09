@@ -4,12 +4,13 @@ const path = require("path");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users");
 const postRoutes = require("./routes/posts");
+const authenticateToken = require("./middlewares/authMiddleware");
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "frontend/public")));
 app.use("/api/auth", authRoutes);
-app.use("/api/users", userRoutes);
-app.use("/api/posts", postRoutes);
+app.use("/api/users",authenticateToken, userRoutes);
+app.use("/api/posts",authenticateToken, postRoutes);
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "frontend/public/index.html"));
 });
