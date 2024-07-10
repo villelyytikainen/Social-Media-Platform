@@ -1,7 +1,14 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const Notification = ({ message }) => {
     const errRef = useRef();
+
+    useEffect(() => {
+        if (message) {
+            errRef.current.focus();
+        }
+    }, [message]);
+
     return (
         <div>
             <p ref={errRef} className={message ? "errmsg" : "offscreen"} aria-live='assertive'>

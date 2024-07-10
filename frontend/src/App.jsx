@@ -7,22 +7,14 @@ import "./App.css";
 
 function App() {
     const [authenticated, setAuthenticated] = useState(false);
+    const [token, setToken] = useState("");
 
     useEffect(() => {
         const cookies = document.cookie;
         setToken(cookies.split("=")[1]);
-    });
+    }, []);
 
-    const setToken = (token) => {
-        console.log(token);
-        if (!token) {
-            setAuthenticated(false);
-        } else {
-            setAuthenticated(true);
-        }
-    };
-
-    if (!authenticated) {
+    if (!token) {
         return (
             <section id='App'>
                 <LandingPage setToken={setToken} />
