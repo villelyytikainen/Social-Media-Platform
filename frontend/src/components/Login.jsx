@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import login from "../services/loginService";
+import Notification from "./Notification";
 
 const Login = ({ setToken }) => {
     const userRef = useRef();
-    const errRef = useRef();
 
     const [errMsg, setErrMsg] = useState("");
     const [state, setState] = useState({
@@ -49,9 +49,7 @@ const Login = ({ setToken }) => {
     return (
         <form onSubmit={onSubmit} className='landing-page-form'>
             <h1>Login</h1>
-            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live='assertive'>
-                {errMsg}
-            </p>
+            <Notification message={errMsg} />
             <input type='text' name='username' ref={userRef} value={state.username} onChange={onChange} placeholder='Username' id='username-input' required />
             <input type='password' name='password' value={state.password} onChange={onChange} placeholder='Password' id='password-input' required />
             <input type='submit' value='Login' id='login-button' />
