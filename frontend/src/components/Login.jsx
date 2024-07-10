@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import login from "../services/loginService";
 
 const Login = ({ setToken }) => {
     const userRef = useRef();
@@ -29,28 +30,16 @@ const Login = ({ setToken }) => {
 
     const onSubmit = async (event) => {
         event.preventDefault();
-        const endPoint = event.target.action;
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData.entries());
 
-        console.log(endPoint)
-
         try {
-            const response = await fetch(endPoint, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            });
-
-            const resData = await response.json();
-
+            const response = await login(data);
             if (response.ok) {
                 //Get token
-                setToken(resData.token);
+                setToken(response.token);
             } else {
-                setErrMsg(resData.message);
+                setErrMsg(response.message);
             }
         } catch (error) {
             console.log(error);
@@ -58,7 +47,7 @@ const Login = ({ setToken }) => {
     };
 
     return (
-        <form action='/api/auth/login' onSubmit={onSubmit} className='landing-page-form'>
+        <form onSubmit={onSubmit} className='landing-page-form'>
             <h1>Login</h1>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live='assertive'>
                 {errMsg}
