@@ -6,7 +6,6 @@ import LandingPage from "./components/LandingPage";
 import "./App.css";
 
 function App() {
-    const [authenticated, setAuthenticated] = useState(false);
     const [token, setToken] = useState("");
 
     useEffect(() => {
@@ -14,15 +13,11 @@ function App() {
         setToken(cookies.split("=")[1]);
     }, []);
 
-    if (!token) {
-        return (
-            <section id='App'>
-                <LandingPage setToken={setToken} />
-            </section>
-        );
-    }
-
-    return (
+    return !token ? (
+        <section id='App'>
+            <LandingPage setToken={setToken} />
+        </section>
+    ) : (
         <section id='App'>
             <Navbar />
             <Home />

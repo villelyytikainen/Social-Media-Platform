@@ -40,6 +40,9 @@ const Login = ({ setToken }) => {
                 setToken(response.token);
             } else {
                 setErrMsg(response.message);
+                setTimeout(() => {
+                    setErrMsg(null);
+                }, 5000);
             }
         } catch (error) {
             console.log(error);
