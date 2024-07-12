@@ -1,4 +1,4 @@
-import { useEffect, useState, useReducer } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/HomePage";
 import Chatbar from "./components/Chatbar";
@@ -6,12 +6,7 @@ import LandingPage from "./components/LandingPage";
 import "./App.css";
 
 function App() {
-    const [token, setToken] = useState("");
-
-    useEffect(() => {
-        const cookies = document.cookie;
-        setToken(cookies.split("=")[1]);
-    }, []);
+    const [token, setToken] = useState(document.cookie.split("=")[1]);
 
     return !token ? (
         <section id='App'>

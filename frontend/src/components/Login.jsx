@@ -35,9 +35,11 @@ const Login = ({ setToken }) => {
 
         try {
             const response = await login(data);
-            if (response.ok) {
+            console.log(response)
+            if (response.token) {
                 //Get token
                 setToken(response.token);
+                console.log("token set")
             } else {
                 setErrMsg(response.message);
                 setTimeout(() => {
