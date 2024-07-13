@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require("cors")
 const path = require("path");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users");
@@ -9,8 +10,9 @@ const authenticateToken = require("./middlewares/authMiddleware");
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "frontend/public")));
 app.use("/api/auth", authRoutes);
-app.use("/api/users",authenticateToken, userRoutes);
-app.use("/api/posts",authenticateToken, postRoutes);
+app.use(authenticateToken)
+app.use("/api/users", userRoutes);
+app.use("/api/posts", postRoutes);
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "frontend/public/index.html"));
 });

@@ -6,7 +6,7 @@ import LandingPage from "./components/LandingPage";
 import "./App.css";
 
 function App() {
-    const [token, setToken] = useState(document.cookie.split("=")[1]);
+    const [token, setToken] = useState();
 
     return !token ? (
         <section id='App'>

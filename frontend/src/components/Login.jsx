@@ -35,7 +35,7 @@ const Login = ({ setToken }) => {
 
         try {
             const response = await login(data);
-            console.log(response)
+            console.log(`Login frontend response: ${JSON.stringify(response)}`)
             if (response.token) {
                 //Get token
                 setToken(response.token);
