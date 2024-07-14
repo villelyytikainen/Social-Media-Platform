@@ -10,7 +10,6 @@ const authenticateToken = (req, res, next) => {
     try {
         const decoded = jwt.verify(token, process.env.SM_JWTTOKEN);
         req.user = decoded;
-        console.log(req.user)
         next();
     } catch (error) {
         next(error);

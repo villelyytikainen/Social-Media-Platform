@@ -6,15 +6,32 @@ import LandingPage from "./components/LandingPage";
 import "./App.css";
 
 function App() {
-    const [token, setToken] = useState();
+    const [loggedIn, setLoggedIn] = useState(false);
 
-    return !token ? (
+    useEffect(() => {
+        const fetchAuthStatus = async () => {
+            try {
+                const response = await fetch("/api/auth/check-auth", {
+                    credentials: "include"
+                });
+                const authData = await response.json();
+                const loggedIn = authData.loggedIn;
+                setLoggedIn(loggedIn);
+            } catch (error) {
+                console.error("Error checking authentication status:", error);
+            }
+        };
+
+        fetchAuthStatus();
+    }, []);
+
+    return !loggedIn ? (
         <section id='App'>
-            <LandingPage setToken={setToken} />
+            <LandingPage setLoggedIn={setLoggedIn} />
         </section>
     ) : (
         <section id='App'>
-            <Navbar />
+            <Navbar setLoggedIn={setLoggedIn}/>
             <Home />
             <Chatbar />
         </section>

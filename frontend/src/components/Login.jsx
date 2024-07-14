@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import login from "../services/loginService";
 import Notification from "./Notification";
 
-const Login = ({ setToken }) => {
+const Login = ({ setLoggedIn }) => {
     const userRef = useRef();
 
     const [errMsg, setErrMsg] = useState("");
@@ -36,10 +36,9 @@ const Login = ({ setToken }) => {
         try {
             const response = await login(data);
             console.log(`Login frontend response: ${JSON.stringify(response)}`)
-            if (response.token) {
+            if (response.loggedIn) {
                 //Get token
-                setToken(response.token);
-                console.log("token set")
+                setLoggedIn(response.loggedIn);
             } else {
                 setErrMsg(response.message);
                 setTimeout(() => {

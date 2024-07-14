@@ -2,7 +2,7 @@ import "./css/Navbar.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({setLoggedIn}) => {
     const [minimized, setMinimized] = useState(false);
 
     const toggleSidebar = () => {
@@ -19,7 +19,7 @@ const Navbar = () => {
             });
 
             const data = await response.json();
-            console.log(data);
+            setLoggedIn(data.loggedIn)
         } catch (error) {
             return error;
         }
