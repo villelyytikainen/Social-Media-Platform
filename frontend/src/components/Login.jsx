@@ -33,9 +33,13 @@ const Login = ({ setLoggedIn }) => {
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData.entries());
 
+        setErrMsg("meow");
+        setTimeout(() => {
+            setErrMsg(null);
+        }, 5000);
+
         try {
             const response = await login(data);
-            console.log(`Login frontend response: ${JSON.stringify(response)}`)
             if (response.loggedIn) {
                 //Get token
                 setLoggedIn(response.loggedIn);

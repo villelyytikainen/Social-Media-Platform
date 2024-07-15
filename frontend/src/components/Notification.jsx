@@ -10,7 +10,7 @@ const Notification = ({ message }) => {
     }, [message]);
 
     return (
-        <div>
+        <div className="notification">
             <p ref={errRef} className={message ? "errmsg" : "offscreen"} aria-live='assertive'>
                 {message}
             </p>

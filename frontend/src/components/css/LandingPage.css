@@ -41,8 +41,23 @@
     margin: 1rem 0;
 }
 
+@keyframes errAnim {
+    from {
+        font-size: 0rem;
+        color: rgba(255, 0, 0, 0);
+    }
+    to {
+        font-size: 1.2rem;
+        color: (255, 0, 0, 1);
+    }
+}
+
 .errmsg {
     color: red;
+    position: absolute;
+
+    animation-name: errAnim;
+    animation-duration: 0.5s;
 }
 
 .offscreen {
