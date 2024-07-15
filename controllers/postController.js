@@ -3,6 +3,7 @@ const db = require("../database/postOperations");
 const getAllPosts = async (req, res, next) => {
     try {
         const posts = await db.getAllPosts();
+        console.log(posts)
         res.status(200).json(posts);
     } catch (error) {
         next(error);

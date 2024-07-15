@@ -12,9 +12,4 @@ const errorHandling = (err, req, res, next) => {
     });
 };
 
-const testPrint = (req,res,next) => {
-    console.log(req.user)
-    next()
-}
-
-module.exports = {errorHandling, testPrint};
+module.exports = {errorHandling};
