@@ -26,7 +26,7 @@ const authenticateUser = async (req, res, next) => {
             maxAge: 3600000,
         });
 
-        return res.status(200).json({ message: "User logged in", loggedIn: true });
+        return res.status(200).json({ message: "User logged in", loggedIn: token ? true : false });
     } catch (error) {
         next(error);
     }
@@ -40,9 +40,8 @@ const checkAuth = async (req, res) => {
     }
 
     try {
-        console.log(token);
         const decoded = jwt.verify(token, process.env.SM_JWTTOKEN);
-        return res.json({ loggedIn: true, user: decoded.username });
+        return res.json({ loggedIn: (decoded ? true : false), user: decoded.username });
     } catch {
         return res.json({ loggedIn: false });
     }
@@ -72,3 +71,4 @@ module.exports = {
     createSession,
     logoutUser,
 };
+

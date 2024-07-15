@@ -4,8 +4,6 @@ import "./css/Feed.css";
 
 const Feed = ({ posts }) => {
 
-    console.log("feed ", posts)
-
     return (
         <div id='feed-container'>
             <PostField />

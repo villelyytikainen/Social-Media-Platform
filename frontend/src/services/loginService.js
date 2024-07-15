@@ -11,7 +11,6 @@ const login = async (credentials) => {
     });
 
     const data = await response.json();
-    console.log(`login service data: ${JSON.stringify(data)}`)
     return data;
 };
 

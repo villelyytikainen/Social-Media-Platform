@@ -6,13 +6,15 @@ import LandingPage from "./components/LandingPage";
 import "./App.css";
 
 function App() {
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState();
+
+    console.log(loggedIn);
 
     useEffect(() => {
         const fetchAuthStatus = async () => {
             try {
                 const response = await fetch("/api/auth/check-auth", {
-                    credentials: "include"
+                    credentials: "include",
                 });
                 const authData = await response.json();
                 const loggedIn = authData.loggedIn;
@@ -31,7 +33,7 @@ function App() {
         </section>
     ) : (
         <section id='App'>
-            <Navbar setLoggedIn={setLoggedIn}/>
+            <Navbar setLoggedIn={setLoggedIn} />
             <Home />
             <Chatbar />
         </section>
