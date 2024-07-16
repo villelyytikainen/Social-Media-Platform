@@ -43,21 +43,21 @@
 
 @keyframes errAnim {
     from {
-        font-size: 0rem;
+        transform: scale(0);
         color: rgba(255, 0, 0, 0);
     }
     to {
-        font-size: 1.2rem;
+        transform: scale(1);
         color: (255, 0, 0, 1);
     }
 }
 
 .errmsg {
     color: red;
-    position: absolute;
 
+    display: absolute;
     animation-name: errAnim;
-    animation-duration: 0.5s;
+    animation-duration: 0.6s;
 }
 
 .offscreen {
@@ -102,4 +102,36 @@
     font-size: 1.5rem;
     cursor: pointer;
     transition: 0.5s;
+}
+
+@media (max-width: 1199px) {
+    #landing-page-container {
+        display: flex;
+        width: 100vh;
+        height: 600px;
+        background-color: red;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    #landing-page-form-container {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+
+    #landing-page-image-container {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: url("../../assets/landing_image.jpg") rgba(37, 150, 190, 0.2);
+        background-position: center;
+        background-size: cover;
+        background-blend-mode: darken;
+    }
 }

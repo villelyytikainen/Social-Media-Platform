@@ -33,7 +33,7 @@ const createPost = async (post) => {
             .input("created", sql.Date, post.created)
             .input("updated", sql.Date, post.updated)
             .query(
-                `INSERT INTO user_post (user_id, title, written_text,likes, created_at, updated_at) VALUES (@user_id, @title, @content, @likes, @created, @updated)`
+                `INSERT INTO user_post (profile_id, title, written_text,likes, created_at, updated_at) VALUES (@user_id, @title, @content, @likes, @created, @updated)`
             );
         return result.recordset;
     } catch (error) {

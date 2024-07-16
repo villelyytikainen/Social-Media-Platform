@@ -9,35 +9,41 @@ const PostField = () => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData.entries());
-        console.log(data)
+        console.log(data);
 
-        try{
+        try {
             const response = await fetch("/api/posts", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(data)
-            })
+                body: JSON.stringify(data),
+            });
 
-            if(response.ok){
-                console.log(response)
+            if (response.ok) {
+                console.log(response);
             }
-
-        }catch(error){
-            console.error(error)
+        } catch (error) {
+            console.error(error);
         }
     };
 
     const onChange = (e) => {
         setFieldData(e.target.value);
-
     };
 
     return (
         <div id='post-field-container'>
             <form onSubmit={handlePost}>
-                <textarea name='content' cols='60' rows='5' id='post-textarea' placeholder="What's on your mind?" value={fieldData} onChange={onChange}></textarea>
+                <textarea
+                    name='content'
+                    cols='60'
+                    rows='5'
+                    id='post-textarea'
+                    placeholder="What's on your mind?"
+                    value={fieldData}
+                    onChange={onChange}
+                ></textarea>
                 <input type='submit' id='post-submit-btn' value='Post' />
             </form>
         </div>

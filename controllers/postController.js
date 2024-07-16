@@ -1,9 +1,10 @@
 const db = require("../database/postOperations");
+const { getUserById, getUserByUsername } = require("../database/userOperations");
 
 const getAllPosts = async (req, res, next) => {
     try {
         const posts = await db.getAllPosts();
-        console.log(posts)
+        console.log(posts);
         res.status(200).json(posts);
     } catch (error) {
         next(error);
@@ -21,7 +22,25 @@ const getPostById = async (req, res, next) => {
 
 const createPost = async (req, res, next) => {
     try {
-        const post = await db.createPost();
+        const { username } = req.user;
+        const { content } = req.body;
+
+        const [user] = await getUserByUsername({ username });
+
+        if(!user){
+            return res.status(404).json({"message": "not user found"})
+        }
+
+        const newPost = {
+            user_id: user.id,
+            title: "title_placeholder",
+            content: content,
+            likes: 0,
+            created: new Date().toISOString().slice(0, 10),
+            updated: new Date().toISOString().slice(0, 10),
+        };
+
+        const post = await db.createPost(newPost);
         res.status(201).json(post);
     } catch (error) {
         next(error);
