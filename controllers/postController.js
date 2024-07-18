@@ -23,17 +23,17 @@ const getPostById = async (req, res, next) => {
 const createPost = async (req, res, next) => {
     try {
         const { username } = req.user;
-        const { content } = req.body;
+        const { title, content } = req.body;
 
         const [user] = await getUserByUsername({ username });
 
-        if(!user){
-            return res.status(404).json({"message": "not user found"})
+        if (!user) {
+            return res.status(404).json({ message: "not user found" });
         }
 
         const newPost = {
             user_id: user.id,
-            title: "title_placeholder",
+            title: title,
             content: content,
             likes: 0,
             created: new Date().toISOString().slice(0, 10),

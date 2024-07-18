@@ -41,29 +41,6 @@
     margin: 1rem 0;
 }
 
-@keyframes errAnim {
-    from {
-        transform: scale(0);
-        color: rgba(255, 0, 0, 0);
-    }
-    to {
-        transform: scale(1);
-        color: (255, 0, 0, 1);
-    }
-}
-
-.errmsg {
-    color: red;
-
-    display: absolute;
-    animation-name: errAnim;
-    animation-duration: 0.6s;
-}
-
-.offscreen {
-    display: none;
-}
-
 #username-input,
 #password-input,
 #confirm-password-input,

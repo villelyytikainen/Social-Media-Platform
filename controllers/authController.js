@@ -6,16 +6,15 @@ const jwt = require("jsonwebtoken");
 const authenticateUser = async (req, res, next) => {
     try {
         const { username, password } = req.body;
-        const user = await db.getUserByUsername({ username });
+        const [user] = await db.getUserByUsername({ username });
+        const isPasswordValid = !user ? false : await bcrypt.compare(password, user.password);
 
-        if (user.length === 0) {
-            return res.status(404).json({ message: "User not found" });
-        }
+        console.log(user)
 
-        const isPasswordValid = await bcrypt.compare(password, user[0].password);
-
-        if (!isPasswordValid) {
-            return res.status(400).json({ message: "Invalid credentials" });
+        if (!(user && isPasswordValid)) {
+            return res.status(401).json({
+                message: "invalid username or password",
+            });
         }
 
         const token = jwt.sign({ username }, process.env.SM_JWTTOKEN, { expiresIn: "1h" });

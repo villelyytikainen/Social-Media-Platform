@@ -1,15 +1,21 @@
 import "./css/PostField.css";
 import { useState } from "react";
-//import {createPost} from "../../../../database/dbOperations";
+import Notification from "./Notification";
 
 const PostField = () => {
-    const [fieldData, setFieldData] = useState("");
+    const [postContent, setPostContent] = useState({
+        title: "",
+        content: "",
+    });
+    const [notification, setNotification] = useState({
+        message: "",
+        type: "",
+    });
 
-    const handlePost = async (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData.entries());
-        console.log(data);
 
         try {
             const response = await fetch("/api/posts", {
@@ -21,7 +27,14 @@ const PostField = () => {
             });
 
             if (response.ok) {
-                console.log(response);
+                setNotification({ message: "Posted!", type: "notification" });
+                setTimeout(() => {
+                    setNotification({ message: "", type: "" });
+                }, 5000);
+                setPostContent({
+                    title: "",
+                    content: "",
+                });
             }
         } catch (error) {
             console.error(error);
@@ -29,19 +42,24 @@ const PostField = () => {
     };
 
     const onChange = (e) => {
-        setFieldData(e.target.value);
+        console.log(e.target.name);
+        setPostContent({
+            [e.target.name]: e.target.value,
+        });
     };
 
     return (
         <div id='post-field-container'>
-            <form onSubmit={handlePost}>
+            <form onSubmit={onSubmit}>
+                <Notification content={notification} />
+                <input type='text' name='title' value={postContent.title} onChange={onChange} />
                 <textarea
                     name='content'
                     cols='60'
                     rows='5'
                     id='post-textarea'
                     placeholder="What's on your mind?"
-                    value={fieldData}
+                    value={postContent.content}
                     onChange={onChange}
                 ></textarea>
                 <input type='submit' id='post-submit-btn' value='Post' />

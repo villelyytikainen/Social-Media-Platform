@@ -5,8 +5,11 @@ import Notification from "./Notification";
 const Login = ({ setLoggedIn }) => {
     const userRef = useRef();
 
-    const [errMsg, setErrMsg] = useState("");
-    const [state, setState] = useState({
+    const [notification, setNotification] = useState({
+        message: "",
+        type: "",
+    });
+    const [user, setUser] = useState({
         username: "",
         password: "",
     });
@@ -16,11 +19,11 @@ const Login = ({ setLoggedIn }) => {
     }, []);
 
     useEffect(() => {
-        setErrMsg("");
-    }, [state.username, state.password]);
+        setNotification({ message: "", type: "" });
+    }, [user.username, user.password]);
 
     const onChange = (event) => {
-        setState((state) => {
+        setUser((state) => {
             return {
                 ...state,
                 [event.target.name]: event.target.value,
@@ -35,13 +38,14 @@ const Login = ({ setLoggedIn }) => {
 
         try {
             const response = await login(data);
+            console.log(response);
             if (response.loggedIn) {
                 //Get token
                 setLoggedIn(response.loggedIn);
             } else {
-                setErrMsg(response.message);
+                setNotification({ message: response.message, type: "error" });
                 setTimeout(() => {
-                    setErrMsg(null);
+                    setNotification({ message: "", type: "" });
                 }, 5000);
             }
         } catch (error) {
@@ -52,9 +56,9 @@ const Login = ({ setLoggedIn }) => {
     return (
         <form onSubmit={onSubmit} className='landing-page-form'>
             <h1>Login</h1>
-            <Notification message={errMsg} />
-            <input type='text' name='username' ref={userRef} value={state.username} onChange={onChange} placeholder='Username' id='username-input' required />
-            <input type='password' name='password' value={state.password} onChange={onChange} placeholder='Password' id='password-input' required />
+            <Notification content={notification} />
+            <input type='text' name='username' ref={userRef} value={user.username} onChange={onChange} placeholder='Username' id='username-input' required />
+            <input type='password' name='password' value={user.password} onChange={onChange} placeholder='Password' id='password-input' required />
             <input type='submit' value='Login' id='login-button' />
         </form>
     );

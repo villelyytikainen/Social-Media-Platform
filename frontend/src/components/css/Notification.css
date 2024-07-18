@@ -1,0 +1,29 @@
+@keyframes errAnim {
+    from {
+        transform: scale(0);
+        color: rgba(255, 0, 0, 0);
+    }
+    to {
+        transform: scale(1);
+        color: (255, 0, 0, 1);
+    }
+}
+
+.errmsg,
+.notmsg {
+    display: absolute;
+    animation-name: errAnim;
+    animation-duration: 0.6s;
+}
+
+.notmsg {
+    color: green;
+}
+
+.errmsg {
+    color: red;
+}
+
+.offscreen {
+    display: none;
+}
