@@ -49,22 +49,24 @@ const PostField = () => {
     };
 
     return (
-        <div id='post-field-container'>
-            <form onSubmit={onSubmit}>
-                <Notification content={notification} />
-                <input type='text' name='title' value={postContent.title} onChange={onChange} />
-                <textarea
-                    name='content'
-                    cols='60'
-                    rows='5'
-                    id='post-textarea'
-                    placeholder="What's on your mind?"
-                    value={postContent.content}
-                    onChange={onChange}
-                ></textarea>
-                <input type='submit' id='post-submit-btn' value='Post' />
-            </form>
-        </div>
+        <>
+            <div id='post-field-container'>
+                <form onSubmit={onSubmit}>
+                    <input type='text' name='title' value={postContent.title} onChange={onChange} />
+                    <textarea
+                        name='content'
+                        cols='60'
+                        rows='5'
+                        id='post-textarea'
+                        placeholder="What's on your mind?"
+                        value={postContent.content}
+                        onChange={onChange}
+                    ></textarea>
+                    <input type='submit' id='post-submit-btn' value='Post' />
+                </form>
+            </div>
+            <Notification content={notification} />
+        </>
     );
 };
 

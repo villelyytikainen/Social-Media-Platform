@@ -1,22 +1,21 @@
-#post-field-container{
+#post-field-container {
     display: flex;
     flex-direction: column;
     padding: 0.5rem;
     max-width: 1000px;
-    height: 200px;
     width: 80%;
     margin: 1rem auto;
     border: 1px solid #34425a20;
 }
 
-#post-field-container form{
+#post-field-container form {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 200px;
     width: 100%;
 }
 
-#post-textarea{
+#post-textarea {
     resize: none;
     align-self: center;
     width: 100%;
@@ -24,16 +23,15 @@
     background-color: #f2faff;
     padding: 2rem;
     width: 100%;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     /* border: 1px solid #34425a20; */
 }
 
-#post-textarea:focus{
+#post-textarea:focus {
     outline: none;
 }
 
-
-#post-submit-btn{
+#post-submit-btn {
     align-self: flex-end;
     font-size: 1.5rem;
     width: 100px;
