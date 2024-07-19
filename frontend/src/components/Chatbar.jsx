@@ -1,6 +1,8 @@
 import "./css/Chatbar.css";
 import { useState } from "react";
 import ChatUser from "./ChatUser";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Chatbar = () => {
     const [minimized, setMinimized] = useState(false);
@@ -31,43 +33,27 @@ const Chatbar = () => {
             name: "Mercie Grose",
             username: "mgrose4",
         },
-        {
-            id: 6,
-            name: "Franky Trevan",
-            username: "ftrevan5",
-        },
-        {
-            id: 7,
-            name: "Broderick Gane",
-            username: "bgane6",
-        },
-        {
-            id: 8,
-            name: "Lloyd Burnage",
-            username: "lburnage7",
-        },
-        {
-            id: 9,
-            name: "Hardy Moffatt",
-            username: "hmoffatt8",
-        },
-        {
-            id: 10,
-            name: "Afton Tratton",
-            username: "atratton9",
-        },
     ];
 
     const toggleSidebar = () => {
         setMinimized(!minimized);
     };
 
-    return (
+    return !minimized ? (
         <div id='chatbar' style={{ width: minimized ? "50px" : "150px", transition: "width 0.5s" }}>
-            <button onClick={toggleSidebar}>Minimize</button>
+            <FontAwesomeIcon icon={faArrowRight} className="toggle-sidebar-icon" onClick={toggleSidebar} size="1x"/>
             <ul id='chat-user-list'>
                 {users.map((user) => (
                     <ChatUser key={user.id} name={user.name} username={user.username} />
+                ))}
+            </ul>
+        </div>
+    ) : (
+        <div id='chatbar' style={{ width: minimized ? "50px" : "150px", transition: "width 0.5s" }}>
+            <FontAwesomeIcon icon={faArrowLeft} className="toggle-sidebar-icon" onClick={toggleSidebar} />
+            <ul id='chat-user-list'>
+                {users.map((user) => (
+                    <ChatUser key={user.id} name={user.name} username={user.username} minimized={minimized} />
                 ))}
             </ul>
         </div>

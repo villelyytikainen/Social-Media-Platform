@@ -57,8 +57,8 @@ const Login = ({ setLoggedIn }) => {
         <form onSubmit={onSubmit} className='landing-page-form'>
             <h1>Login</h1>
             <Notification content={notification} />
-            <input type='text' name='username' ref={userRef} value={user.username} onChange={onChange} placeholder='Username' id='username-input' required />
-            <input type='password' name='password' value={user.password} onChange={onChange} placeholder='Password' id='password-input' required />
+            <input type='text' name='username' ref={userRef} value={user.username} onChange={onChange} placeholder='Username' id='username-input' autoComplete="off" required />
+            <input type='password' name='password' value={user.password} onChange={onChange} placeholder='Password' id='password-input' autoComplete="off" required />
             <input type='submit' value='Login' id='login-button' />
         </form>
     );

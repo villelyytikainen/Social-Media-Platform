@@ -36,7 +36,6 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    border: 1px solid black;
 }
 
 /* .landing-page-form > * {
@@ -86,9 +85,8 @@
 @media (max-width: 1199px) {
     #landing-page-container {
         display: flex;
-        width: 100vh;
-        height: 600px;
-        background-color: red;
+        width: 100vw;
+        height: 100vh;
         margin: 0;
         position: absolute;
         top: 50%;
@@ -110,7 +108,7 @@
         align-items: center;
         background: url("../../assets/landing_image.jpg") rgba(37, 150, 190, 0.2);
         background-position: center;
-        background-size: cover;
+        background-size:cover;
         background-blend-mode: darken;
     }
 }

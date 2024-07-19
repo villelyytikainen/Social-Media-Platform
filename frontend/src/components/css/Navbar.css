@@ -1,17 +1,16 @@
-#navbar{
-    position:fixed;
+#navbar {
+    position: fixed;
     left: 0;
     top: 0;
-    background-color: #282C34;
-    margin:0;
+    background-color: #282c34;
+    margin: 0;
     padding: 0;
     width: 200px;
     color: #f2faff;
     font-size: 2rem;
 }
 
-
-#navbar-list{
+#navbar-list {
     display: flex;
     height: 100vh;
     flex-direction: column;
@@ -21,19 +20,35 @@
     margin: 0;
     padding: 0;
     color: red;
-    background-color: #282C34;
+    background-color: #282c34;
 }
 
-.nav-item{
+.toggle-sidebar-icon {
+    color: #f2faff;
+    font-size: 2rem;
+}
+
+.nav-item {
     padding: 1rem;
 }
 
-.navbar-minimized{
+.nav-link,
+.toggle-sidebar-icon {
+    transition-duration: 0.2s;
+}
+
+.nav-link:hover,
+.toggle-sidebar-icon:hover {
+    cursor: pointer;
+    color: #f2faff80;
+}
+
+.navbar-minimized {
     width: 50px;
 }
 
-.svg{
-    fill:white;
+.svg {
+    fill: white;
     width: 40px;
     height: 40px;
 }
