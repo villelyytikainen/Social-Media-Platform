@@ -6,7 +6,7 @@ import LandingPage from "./components/LandingPage";
 import "./App.css";
 
 function App() {
-    const [loggedIn, setLoggedIn] = useState(true);
+    const [loggedIn, setLoggedIn] = useState();
 
     useEffect(() => {
         const fetchAuthStatus = async () => {
