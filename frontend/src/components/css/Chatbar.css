@@ -27,6 +27,12 @@
     transition-duration: 0.2s;
 }
 
+.chat-user-pfp{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
 .chat-user:hover {
     cursor: pointer;
     color: #f2faff80;

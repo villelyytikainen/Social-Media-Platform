@@ -1,15 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-const ChatUser = ({ name, username, minimized }) => {
+const ChatUser = ({ username, pfp, minimized }) => {
     return !minimized ? (
-        <li className='chat-user'>
-            <p className='chat-user-name'>{name}</p>
+        <li className='chat-user-expanded'>
+            {pfp ? <img src={pfp} alt="profile picture" className="chat-user-pfp" /> : <FontAwesomeIcon icon={faUser} />}
+            <p className='chat-user-name'>{username}</p>
         </li>
     ) : (
         <li className='chat-user'>
-            <FontAwesomeIcon icon={faUser} />
-            <p className='chat-user-username'>{name.split(" ").shift()}</p>
+            {pfp ? <img src={pfp} alt="profile picture" className="chat-user-pfp" /> : <FontAwesomeIcon icon={faUser} />}
+
         </li>
     );
 };
