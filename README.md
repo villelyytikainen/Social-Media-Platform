@@ -9,9 +9,6 @@ This project is a full-featured social networking platform built with modern web
   - [Built With](#built-with)
   - [Screenshots](#screenshots)
 
-## About the Project 🌟
-A more detailed description of your project. Explain its purpose, and what problem it solves.
-
 ### Features
 - User Authentication: Secure user registration and login system with JWT.
 - User Profiles: Customizable user profiles with profile pictures, bios, and posts.
