@@ -29,7 +29,7 @@ This project is a full-featured social networking platform built with modern web
 - [React](https://reactjs.org/)
 - [Node.js](https://nodejs.org/)
 - [Express](https://expressjs.com/)
-- [MongoDB](https://www.mongodb.com/)
+- [SQL]
 
 ### Screenshots 📸
 
