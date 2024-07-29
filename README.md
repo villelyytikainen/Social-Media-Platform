@@ -16,6 +16,7 @@ This project is a full-featured social networking platform built with modern web
 - Follow System: Follow and unfollow users to see their posts in your feed.
 - Likes and Comments: Engage with posts by liking and commenting.
 - Real-time Notifications: Receive real-time notifications for likes, comments, and new followers.
+- Real-time chatting between users
 - Responsive Design: Fully responsive design to ensure usability on various devices.
 
 ### Tech Stack
