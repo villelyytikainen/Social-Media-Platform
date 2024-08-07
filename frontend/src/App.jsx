@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/HomePage";
 import Chatbar from "./components/Chatbar";
 import LandingPage from "./components/LandingPage";
+import ChatWindow from "./components/ChatWindow";
 import "./App.css";
 
 function App() {
@@ -25,6 +26,10 @@ function App() {
         fetchAuthStatus();
     }, []);
 
+    const toggleChatWindow = () => {
+        console.log("lapanen");
+    };
+
     return !loggedIn ? (
         <section id='App'>
             <LandingPage setLoggedIn={setLoggedIn} />
@@ -33,7 +38,8 @@ function App() {
         <section id='App'>
             <Navbar setLoggedIn={setLoggedIn} />
             <Home />
-            <Chatbar />
+            <ChatWindow />
+            <Chatbar toggleChatWindow={toggleChatWindow} />
         </section>
     );
 }

@@ -4,7 +4,7 @@ import ChatUser from "./ChatUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-const Chatbar = () => {
+const Chatbar = ({toggleChatWindow}) => {
     const [minimized, setMinimized] = useState(false);
 
     const users = [
@@ -46,10 +46,10 @@ const Chatbar = () => {
 
     return (
         <div id='chatbar' style={{ width: minimized ? "50px" : "150px", transition: "width 0.5s" }}>
-            <FontAwesomeIcon icon={minimized ? faArrowLeft : faArrowRight} className="toggle-sidebar-icon" onClick={toggleSidebar} />
+            <FontAwesomeIcon icon={minimized ? faArrowLeft : faArrowRight} className='toggle-sidebar-icon' onClick={toggleSidebar} />
             <ul id='chat-user-list'>
                 {users.map((user) => (
-                    <ChatUser key={user.id} pfp={user.pfp} username={user.username} minimized={minimized} />
+                    <ChatUser key={user.id} pfp={user.pfp} username={user.username} minimized={minimized} toggleChatWindow={toggleChatWindow}/>
                 ))}
             </ul>
         </div>
