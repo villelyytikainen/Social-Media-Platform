@@ -33,7 +33,7 @@
     border-radius: 50%;
 }
 
-.chat-user:hover {
+.chat-user:hover, .chat-user-expanded:hover {
     cursor: pointer;
     color: #f2faff80;
 }

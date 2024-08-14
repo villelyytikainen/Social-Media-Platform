@@ -8,7 +8,7 @@ const ChatUser = ({ username, pfp, minimized, toggleChatWindow }) => {
             <p className='chat-user-name'>{username}</p>
         </li>
     ) : (
-        <li className='chat-user'>
+        <li className='chat-user' onClick={toggleChatWindow}>
             {pfp ? <img src={pfp} alt="profile picture" className="chat-user-pfp" /> : <FontAwesomeIcon icon={faUser} />}
 
         </li>

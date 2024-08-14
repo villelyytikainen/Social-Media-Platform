@@ -7,6 +7,7 @@ import HoverInfo from "./HoverInfo";
 
 const Navbar = ({ setLoggedIn }) => {
     const [minimized, setMinimized] = useState(true);
+    const [toggleInfo, setToggleInfo] = useState(false);
 
     const toggleSidebar = () => {
         setMinimized(!minimized);
@@ -28,6 +29,12 @@ const Navbar = ({ setLoggedIn }) => {
         }
     };
 
+    const handleToggleInfo = (event) => {
+        const rect = event.target.getBoundingClientRect();
+        console.log(rect)
+        setToggleInfo(!toggleInfo);
+    }
+
     if (!minimized) {
         return (
             <nav id='navbar' style={{ width: minimized ? "50px" : "200px", transition: "width 0.5s" }}>
@@ -41,7 +48,7 @@ const Navbar = ({ setLoggedIn }) => {
                                 </Link>
                             </li>
                             <li className='nav-item'>
-                                <Link to='/profile' className='nav-link'>
+                                <Link to='/profile' className='nav-link' onMouseEnter={handleToggleInfo} onMouseLeave={handleToggleInfo}>
                                     Profile
                                 </Link>
                             </li>
@@ -68,6 +75,7 @@ const Navbar = ({ setLoggedIn }) => {
                         </Link>
                     </li>
                 </ul>
+                {toggleInfo ? <HoverInfo /> : null}
             </nav>
         );
     } else {
@@ -108,9 +116,9 @@ const Navbar = ({ setLoggedIn }) => {
                         <Link onClick={handleLogout} className='nav-link'>
                             <FontAwesomeIcon icon={faRightFromBracket} />
                         </Link>
-                        <HoverInfo />
                     </li>
                 </ul>
+                {toggleInfo ? <HoverInfo /> : null}
             </nav>
         );
     }
