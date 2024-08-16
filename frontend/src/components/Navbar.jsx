@@ -8,6 +8,7 @@ import HoverInfo from "./HoverInfo";
 const Navbar = ({ setLoggedIn }) => {
     const [minimized, setMinimized] = useState(true);
     const [toggleInfo, setToggleInfo] = useState(false);
+    const [toggleInfoData, setToggleInfoData] = useState({top: 0, left:0, link: ""})
 
     const toggleSidebar = () => {
         setMinimized(!minimized);
@@ -29,10 +30,15 @@ const Navbar = ({ setLoggedIn }) => {
         }
     };
 
-    const handleToggleInfo = (event) => {
+    const handleInfoEnter = (event) => {
         const rect = event.target.getBoundingClientRect();
-        console.log(rect)
-        setToggleInfo(!toggleInfo);
+        const link = event.currentTarget.getAttribute("data-info");
+        setToggleInfoData({position: rect, link: link});
+        setToggleInfo(true)
+    }
+
+    const handleInfoExit = (event) => {
+        setToggleInfo(false);
     }
 
     if (!minimized) {
@@ -48,7 +54,7 @@ const Navbar = ({ setLoggedIn }) => {
                                 </Link>
                             </li>
                             <li className='nav-item'>
-                                <Link to='/profile' className='nav-link' onMouseEnter={handleToggleInfo} onMouseLeave={handleToggleInfo}>
+                                <Link to='/profile' className='nav-link'>
                                     Profile
                                 </Link>
                             </li>
@@ -75,7 +81,7 @@ const Navbar = ({ setLoggedIn }) => {
                         </Link>
                     </li>
                 </ul>
-                {toggleInfo ? <HoverInfo /> : null}
+                {toggleInfo ? <HoverInfo data={toggleInfoData}/> : null}
             </nav>
         );
     } else {
@@ -86,39 +92,39 @@ const Navbar = ({ setLoggedIn }) => {
                     <li className='nav-item'>
                         <ul className='navbar-list-inner'>
                             <li className='nav-item'>
-                                <Link to='/' className='nav-link'>
+                                <Link to='/' className='nav-link' data-info="Home" onMouseEnter={handleInfoEnter} onMouseLeave={handleInfoExit}>
                                     <FontAwesomeIcon icon={faHouse} />
                                 </Link>
                             </li>
                             <li className='nav-item'>
-                                <Link to='/profile' className='nav-link'>
+                                <Link to='/profile' className='nav-link' data-info="Profile" onMouseEnter={handleInfoEnter} onMouseLeave={handleInfoExit}>
                                     <FontAwesomeIcon icon={faUser} />
                                 </Link>
                             </li>
                             <li className='nav-item'>
-                                <Link to='/messages' className='nav-link'>
+                                <Link to='/messages' className='nav-link' data-info="Messages" onMouseEnter={handleInfoEnter} onMouseLeave={handleInfoExit}>
                                     <FontAwesomeIcon icon={faMessage} />
                                 </Link>
                             </li>
                             <li className='nav-item'>
-                                <Link to='/friends' className='nav-link'>
+                                <Link to='/friends' className='nav-link' data-info="Friends" onMouseEnter={handleInfoEnter} onMouseLeave={handleInfoExit}>
                                     <FontAwesomeIcon icon={faUserGroup} />
                                 </Link>
                             </li>
                             <li className='nav-item'>
-                                <Link to='/settings' className='nav-link'>
+                                <Link to='/settings' className='nav-link' data-info="Settings" onMouseEnter={handleInfoEnter} onMouseLeave={handleInfoExit}>
                                     <FontAwesomeIcon icon={faGear} />
                                 </Link>
                             </li>
                         </ul>
                     </li>
                     <li className='logout-item'>
-                        <Link onClick={handleLogout} className='nav-link'>
+                        <Link onClick={handleLogout} className='nav-link' data-info="Logout" onMouseEnter={handleInfoEnter} onMouseLeave={handleInfoExit}>
                             <FontAwesomeIcon icon={faRightFromBracket} />
                         </Link>
                     </li>
                 </ul>
-                {toggleInfo ? <HoverInfo /> : null}
+                {toggleInfo ? <HoverInfo data={toggleInfoData}/> : null}
             </nav>
         );
     }

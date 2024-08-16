@@ -1,17 +1,18 @@
 import { useState } from "react";
+import "./css/HoverInfo.css"
 
 
-const HoverInfo = (info) => {
+const HoverInfo = ({data}) => {
+    const {position, link} = data
     const style = {
-        "fontColor": "red",
         "position": "absolute",
-        "top": "100px",
-        "left": "100px"
+        "top": `${position.y}px`,
+        "left": `${position.x + 50}px`,
     };
 
     return (
         <div className='hover-info' style={style}>
-            <p>Test</p>
+            <p>{link}</p>
         </div>
     );
 };
