@@ -22,7 +22,7 @@ const getPostById = async (req, res, next) => {
 const createPost = async (req, res, next) => {
     try {
         const { username } = req.user;
-        const { title, content } = req.body;
+        const { content } = req.body;
 
         const [user] = await getUserByUsername({ username });
 
@@ -32,7 +32,7 @@ const createPost = async (req, res, next) => {
 
         const newPost = {
             user_id: user.id,
-            title: title,
+            title: "title",
             content: content,
             likes: 0,
             created: new Date().toISOString().slice(0, 10),

@@ -52,7 +52,6 @@ const PostField = () => {
         <>
             <div id='post-field-container'>
                 <form onSubmit={onSubmit}>
-                    <input type='text' name='title' value={postContent.title} onChange={onChange} />
                     <textarea
                         name='content'
                         cols='60'

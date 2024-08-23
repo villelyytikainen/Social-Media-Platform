@@ -9,7 +9,7 @@ const Feed = ({ posts }) => {
         profile_id: 1,
         profile_name: "testi",
         title: "title",
-        written_text: "content",
+        written_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         created_at: "2024-17-12",
         updated_at: "2024-17-12"
     }
@@ -18,9 +18,9 @@ const Feed = ({ posts }) => {
         <div id='feed-container'>
             <PostField />
             <ul id='feed-posts'>
-                {/* {posts.sort((a,b) => a.created_at < b.created_at).map((post) => (
+                {posts.sort((a,b) => a.created_at < b.created_at).map((post) => (
                     <Post key={post.id} post={post} />
-                ))} */}
+                ))}
                 <Post key={post.id} post={post} />
             </ul>
         </div>

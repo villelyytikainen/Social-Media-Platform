@@ -25,7 +25,7 @@ const authenticateUser = async (req, res, next) => {
             maxAge: 3600000,
         });
 
-        return res.status(200).json({ message: "User logged in", loggedIn: token ? true : false });
+        return res.status(200).json({ message: "User logged in", loggedIn: token ? true : false, user: {"id": user.id, "username": user.username}});
     } catch (error) {
         next(error);
     }

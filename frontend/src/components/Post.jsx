@@ -26,14 +26,14 @@ const Post = ({ post }) => {
                 <img src="" alt="" className="post-user-pfp" />
                 <div className="post-user-info">
                     <p className='post-username'>@{profile_name}</p>
-                    <span className="post-created">{created_at.slice(0, 10)}</span>
                 </div>
             </div>
             <div className='post-content'>
                 <p>{written_text}</p>
                 <span>{likes}</span>
-                <p>{updated_at.slice(0, 10)}</p>
+                {/* <p>{updated_at.slice(0, 10)}</p> */}
             </div>
+            <span className="post-created">{created_at.slice(0, 10)}</span>
         </li>
     );
 };

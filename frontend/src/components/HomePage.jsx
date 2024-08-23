@@ -7,8 +7,10 @@ import Friends from "./FriendsPage";
 import Settings from "./SettingsPage";
 import Feed from "./Feed";
 
-const HomePage = () => {
+const HomePage = ({user}) => {
     const [posts, setPosts] = useState([]);
+
+    console.log("its me", user)
 
     useEffect(() => {
         fetchPosts();

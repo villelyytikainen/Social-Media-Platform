@@ -6,7 +6,7 @@ const HoverInfo = ({data}) => {
     const {position, link} = data
     const style = {
         "position": "absolute",
-        "top": `${position.y}px`,
+        "top": `${position.y - 20}px`,
         "left": `${position.x + 50}px`,
     };
 
