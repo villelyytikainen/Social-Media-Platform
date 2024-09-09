@@ -31,7 +31,7 @@ const HomePage = ({user}) => {
         <section id='home-page'>
             <Routes>
                 <Route path='*' element={<Feed posts={posts} />} />
-                <Route path='/profile' element={<Profile posts={posts} />} />
+                <Route path='/profile' element={<Profile posts={posts} user={user} />} />
                 <Route path='/messages' element={<Messages />} />
                 <Route path='/friends' element={<Friends />} />
                 <Route path='/settings' element={<Settings />} />

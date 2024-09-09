@@ -49,7 +49,7 @@ const Chatbar = ({toggleChatWindow}) => {
             <FontAwesomeIcon icon={minimized ? faArrowLeft : faArrowRight} className='toggle-sidebar-icon' onClick={toggleSidebar} />
             <ul id='chat-user-list'>
                 {users.map((user) => (
-                    <ChatUser key={user.id} pfp={user.pfp} username={user.username} minimized={minimized} toggleChatWindow={toggleChatWindow}/>
+                    <ChatUser key={user.id} minimized={minimized} user={user} onSelect={() => toggleChatWindow(user)} />
                 ))}
             </ul>
         </div>

@@ -1,31 +1,34 @@
+import React, { useState } from "react";
 import "./css/Profile.css";
 import Feed from "./Feed";
+import PostField from "./PostField";
 
-const ProfilePage = ({posts}) => {
+const ProfilePage = ({ user, posts }) => {
+    console.log(user, posts)
+    const [userPosts, setUserPosts] = useState(posts.filter(post => post.user_id === user.id));
 
-    //TODO: Check posts from users that are friends
-    //const friends = useState([]);
-    /*posts.map((post) => {
-        return friends.includes(post.profile_id);
-    })
-*/
-
+    const addNewPost = (newPost) => {
+        setUserPosts([newPost, ...userPosts]);
+    };
 
     return (
         <section id='profile-page'>
-            <h1>Name</h1>
             <div id='profile-info-container'>
                 <div className="profile-image-container">
-                    <img src='https://st4.depositphotos.com/6903990/27898/i/450/depositphotos_278981062-stock-photo-beautiful-young-woman-clean-fresh.jpg' alt='' className="profile-image"/>
+                    <img src={user.pfp || "/default-profile-picture.png"} alt={user.name} className="profile-image"/>
                 </div>
                 <div className="profile-info">
-                    <p>Information</p>
-                    <p>City, Country</p>
-                    <p>@username</p>
+                    <h1>{user.name}</h1>
+                    <p>{user.bio || "No bio available"}</p>
+                    <p>{user.location || "Location not specified"}</p>
+                    <p>@{user.username}</p>
                 </div>
             </div>
             <hr />
-            <Feed posts={posts}/>
+            <PostField user={user} onNewPost={addNewPost} />
+            <hr />
+            <h2>Your Posts</h2>
+            <Feed posts={userPosts} />
         </section>
     );
 };

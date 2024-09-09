@@ -7,8 +7,9 @@ import ChatWindow from "./components/ChatWindow";
 import "./App.css";
 
 function App() {
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [me, setMe] = useState({})
+    const [loggedIn, setLoggedIn] = useState(true);
+    const [me, setMe] = useState({});
+    const [openChats, setOpenChats] = useState([]);
 
     useEffect(() => {
         const fetchAuthStatus = async () => {
@@ -28,8 +29,19 @@ function App() {
         fetchAuthStatus();
     }, []);
 
-    const toggleChatWindow = () => {
-        console.log("lapanen");
+    const toggleChatWindow = (user) => {
+        setOpenChats(prevChats => {
+            const existingChat = prevChats.find(chat => chat.id === user.id);
+            if (existingChat) {
+                return [...prevChats.filter(chat => chat.id !== user.id), existingChat];
+            } else {
+                return [...prevChats, user];
+            }
+        });
+    };
+
+    const closeChat = (userId) => {
+        setOpenChats(prevChats => prevChats.filter(chat => chat.id !== userId));
     };
 
     return !loggedIn ? (
@@ -40,7 +52,11 @@ function App() {
         <section id='App'>
             <Navbar setLoggedIn={setLoggedIn} />
             <Home user={me}/>
-            <ChatWindow />
+            <div className="chat-windows-container">
+                {openChats.map(user => (
+                    <ChatWindow key={user.id} user={user} onClose={closeChat} />
+                ))}
+            </div>
             <Chatbar toggleChatWindow={toggleChatWindow} />
         </section>
     );
