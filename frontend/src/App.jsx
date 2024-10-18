@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
+import LandingPage from "./pages/LandingPage";
+import Home from "./pages/HomePage";
 import Navbar from "./components/Navbar";
-import Home from "./components/HomePage";
 import Chatbar from "./components/Chatbar";
-import LandingPage from "./components/LandingPage";
 import ChatWindow from "./components/ChatWindow";
 import "./App.css";
 
 function App() {
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(true);
     const [me, setMe] = useState({});
     const [openChats, setOpenChats] = useState([]);
 

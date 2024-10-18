@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./css/HoverInfo.css"
+import "../assets/styles/HoverInfo.css"
 
 
 const HoverInfo = ({data}) => {

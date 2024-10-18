@@ -1,6 +1,6 @@
 import PostField from "./PostField";
 import Post from "./Post";
-import "./css/Feed.css";
+import "../assets/styles/Feed.css";
 
 const Feed = ({ posts }) => {
 

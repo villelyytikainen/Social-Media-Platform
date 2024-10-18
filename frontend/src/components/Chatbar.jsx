@@ -1,4 +1,4 @@
-import "./css/Chatbar.css";
+import "../assets/styles/Chatbar.css";
 import { useState } from "react";
 import ChatUser from "./ChatUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

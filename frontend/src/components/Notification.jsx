@@ -1,4 +1,4 @@
-import "./css/Notification.css";
+import "../assets/styles/Notification.css";
 import { useEffect, useRef } from "react";
 
 const Notification = ({ content }) => {

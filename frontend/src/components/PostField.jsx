@@ -1,4 +1,4 @@
-import "./css/PostField.css";
+import "../assets/styles/PostField.css";
 import { useState } from "react";
 import Notification from "./Notification";
 

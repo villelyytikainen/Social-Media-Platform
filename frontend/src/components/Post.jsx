@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import "./css/Post.css";
+import "../assets/styles/Post.css";
 
 const Post = ({ post }) => {
     const { profile_id, profile_name, written_text, likes, created_at, updated_at } = post;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./css/Profile.css";
-import Feed from "./Feed";
-import PostField from "./PostField";
+import "../assets/styles/Profile.css";
+import Feed from "../components/Feed";
+import PostField from "../components/PostField";
 
 const ProfilePage = ({ user, posts }) => {
     console.log(user, posts)
@@ -24,9 +24,6 @@ const ProfilePage = ({ user, posts }) => {
                     <p>@{user.username}</p>
                 </div>
             </div>
-            <hr />
-            <PostField user={user} onNewPost={addNewPost} />
-            <hr />
             <h2>Your Posts</h2>
             <Feed posts={userPosts} />
         </section>

@@ -1,5 +1,5 @@
-import Friend from "./Friend";
-import "./css/FriendsPage.css";
+import Friend from "../components/Friend";
+import "../assets/styles/FriendsPage.css";
 import { useEffect, useState } from "react";
 
 const FriendsPage = () => {

@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import "./css/HomePage.css";
+import "../assets/styles/HomePage.css";
 import { Routes, Route } from "react-router-dom";
 import Profile from "./ProfilePage";
 import Messages from "./MessagesPage";
 import Friends from "./FriendsPage";
 import Settings from "./SettingsPage";
-import Feed from "./Feed";
+import Feed from "../components/Feed";
 
 const HomePage = ({user}) => {
     const [posts, setPosts] = useState([]);

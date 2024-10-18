@@ -1,4 +1,4 @@
-import './css/Friend.css';
+import '../assets/styles/Friend.css';
 
 const Friend = ({name, username, city}) => {
     return (

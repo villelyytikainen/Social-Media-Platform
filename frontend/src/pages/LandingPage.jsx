@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./css/LandingPage.css";
-import Login from "./Login";
-import Register from "./Register";
+import "../assets/styles/LandingPage.css";
+import Login from "../components/Login";
+import Register from "../components/Register";
 
 const LandingPage = ({ setLoggedIn, setMe }) => {
     const [currentPage, setCurrentPage] = useState("login");
