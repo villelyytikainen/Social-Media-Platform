@@ -1,7 +1,6 @@
 const errorHandling = (err, req, res, next) => {
-    console.error(err); // Log the error for debugging purposes
+    console.error(err);
 
-    // Set a default error status if not already set
     const status = res.statusCode === 200 ? 500 : res.statusCode;
 
     res.status(status).json({

@@ -6,6 +6,7 @@ const userRoutes = require("./routes/users");
 const postRoutes = require("./routes/posts");
 const authenticateToken = require("./middlewares/authMiddleware");
 const { errorHandling } = require("./middlewares/errorHandling");
+const {Server} = require("socket.io");
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "frontend/public")));
@@ -15,6 +16,17 @@ app.use("/api/posts", authenticateToken, postRoutes);
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "frontend/public/index.html"));
 });
+
+const io = new Server(3008);
+
+io.on("connection", (socket) => {
+    // send message to the client
+    socket.emit("hello", "world");
+
+    socket.on("howdy", (arg) => {
+        console.log(arg)
+    })
+})
 
 app.use(errorHandling);
 

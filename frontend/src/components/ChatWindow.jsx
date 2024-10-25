@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import "../assets/styles/ChatWindow.css";
+import { io } from "socket.io-client";
 
 const ChatWindow = ({ user, onClose }) => {
     const [messages, setMessages] = useState([]);
@@ -7,15 +8,26 @@ const ChatWindow = ({ user, onClose }) => {
     const [isMinimized, setIsMinimized] = useState(false);
     const messagesEndRef = useRef(null);
 
+    const socket = io("ws://localhost:3008");
+
+    //receive a message from the server
+    socket.on("hello", (arg)=> {
+        console.log(arg);
+    })
+
+    socket.emit("howdy", "stranger");
+
     useEffect(() => {
         // Scroll to the bottom when new messages are added
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
 
     // Simulated function to send a message (replace with actual implementation)
-    const sendMessage = () => {
+    const sendMessage = (e) => {
+        console.log(inputMessage)
+        e.preventDefault();
         if (inputMessage.trim() !== '') {
-            setMessages([...messages, { text: inputMessage, sender: 'user' }]);
+            setMessages([...messages, { text: inputMessage, sender: user }]);
             setInputMessage('');
             // Here you would typically send the message to your backend
         }
@@ -54,16 +66,15 @@ const ChatWindow = ({ user, onClose }) => {
                         ))}
                         <div ref={messagesEndRef} />
                     </div>
-                    <div className="chat-input">
+                    <form action="post" className="chat-input">
                         <input
                             type="text"
                             value={inputMessage}
                             onChange={(e) => setInputMessage(e.target.value)}
-                            onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-                            placeholder="Type a message..."
-                        />
-                        <button onClick={sendMessage}>Send</button>
-                    </div>
+                            onSubmit={() => sendMessage()}
+                            placeholder="Type a message..."/>
+                        <input type="submit" onClick={sendMessage} value="Senf" />
+                    </form>
                 </>
             )}
         </div>
