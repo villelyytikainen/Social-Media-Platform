@@ -7,7 +7,7 @@ import ChatWindow from "./components/ChatWindow";
 import "./App.css";
 
 function App() {
-    const [loggedIn, setLoggedIn] = useState(true);
+    const [loggedIn, setLoggedIn] = useState(false);
     const [me, setMe] = useState({});
     const [openChats, setOpenChats] = useState([]);
 

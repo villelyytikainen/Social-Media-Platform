@@ -30,8 +30,10 @@ const createPost = async (req, res, next) => {
             return res.status(404).json({ message: "not user found" });
         }
 
+        console.log(user)
+
         const newPost = {
-            user_id: user.id,
+            user_id: user.user_id,
             title: "title",
             content: content,
             likes: 0,
@@ -46,8 +48,21 @@ const createPost = async (req, res, next) => {
     }
 };
 
+const deletePost = async(req,res,next) => {
+
+    try {
+        const data = await db.deletePost(req.params.id);
+        res.status(200).json({message: `removed ${data.title}`})
+    } catch (error) {
+        next(error);
+    }
+
+    res.status(200).json({message: "removed"})
+}
+
 module.exports = {
     getAllPosts,
     getPostById,
     createPost,
+    deletePost
 };

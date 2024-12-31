@@ -10,8 +10,6 @@ import Feed from "../components/Feed";
 const HomePage = ({user}) => {
     const [posts, setPosts] = useState([]);
 
-    console.log("its me", user)
-
     useEffect(() => {
         fetchPosts();
     }, []);

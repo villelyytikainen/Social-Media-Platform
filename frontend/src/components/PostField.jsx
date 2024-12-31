@@ -4,7 +4,6 @@ import Notification from "./Notification";
 
 const PostField = () => {
     const [postContent, setPostContent] = useState({
-        title: "",
         content: "",
     });
     const [notification, setNotification] = useState({
@@ -32,7 +31,6 @@ const PostField = () => {
                     setNotification({ message: "", type: "" });
                 }, 5000);
                 setPostContent({
-                    title: "",
                     content: "",
                 });
             }

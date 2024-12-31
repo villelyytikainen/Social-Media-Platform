@@ -18,8 +18,9 @@ const getUserByUsername = async (user) => {
         const pool = await connection();
         const result = await pool
         .request()
-        .input("username", sql.VarChar, user.username)
+        .input("username", sql.NVarChar, user.username)
         .query(`SELECT * FROM user_profile WHERE username = @username`);
+        console.log(result.recordset)
         return result.recordset;
     } catch (error) {
         throw new Error(error);
@@ -32,7 +33,7 @@ const getUserById = async (id) => {
         const result = await pool
         .request()
         .input("id", sql.Int, id)
-        .query("SELECT * FROM user_profile WHERE id = @id");
+        .query("SELECT * FROM user_profile WHERE user_id = @id");
         return result.recordset;
     } catch (error) {
         throw new Error(error);
@@ -45,10 +46,12 @@ const createUser = async (user) => {
         const result = await pool
             .request()
             .input("username", sql.NVarChar, user.username)
-            .input("password", sql.Char, user.password)
+            .input("password", sql.NVarChar, user.password)
             .input("created", sql.Date, user.created)
             .input("updated", sql.Date, user.updated)
-            .query("INSERT INTO user_profile (username, password, created_at, updated_at) VALUES (@username, @password, @created, @updated)");
+            .input("settings", sql.NVarChar, "{}")
+            .input("role", sql.NVarChar, "user")
+            .query("INSERT INTO user_profile (username, password, created, updated, settings, role) VALUES (@username, @password, @created, @updated, @settings, @role)");
         return result.recordset;
     } catch (error) {
         console.error(error);
@@ -61,9 +64,10 @@ const updateUser = async (updatedUser) => {
         const result = await pool
             .request()
             .input("username", sql.NVarChar, updatedUser.username)
-            .input("password", sql.Char, updatedUser.password)
+            .input("password", sql.NVarChar, updatedUser.password)
+            .input("")
             .input("updated", sql.Date, updatedUser.updated)
-            .query("UPDATE user_profile SET username = @username, password = @password, updated_at = @updated");
+            .query("UPDATE user_profile SET username = @username, password = @password, updated = @updated");
         return result.recordset;
     } catch (error) {
         console.error(error);
@@ -76,7 +80,7 @@ const deleteUser = async (id) => {
         const result = await pool
         .request()
         .input("id", sql.Int, id)
-        .query("DELETE FROM user_profile WHERE id = @id");
+        .query("DELETE FROM user_profile WHERE user_id = @id");
         return result.recordset;
     } catch (error) {
         console.error(error);

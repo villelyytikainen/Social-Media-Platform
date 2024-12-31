@@ -14,7 +14,7 @@ The application follows a three-tier architecture:
 
 1. User Interface (Frontend): React.js
 2. Application Logic (Backend): Node.js with Express.js
-3. Database: MongoDB
+3. Database: MySQL
 
 ## 3. Detailed Design
 
@@ -132,17 +132,14 @@ Implemented using React Router:
 
 1. dbo.user_profile
     - id: Integer (Primary Key)
-    - username: VARCHAR(50) (Unique)
-    - email: VARCHAR(100) (Unique)
-    - password: VARCHAR(255) (hashed)
-    - profile_picture: VARCHAR(255) (URL)
+    - username: NVARCHAR(50) (Unique)
+    - password: NVARCHAR(255) (hashed)
+    - profile_picture: NVARCHAR(255) (URL)
     - bio: TEXT
-    - date_of_birth: DATE
-    - settings: JSON
-    - is_verified: BOOLEAN
-    - role: VARCHAR(20) CHECK (role IN ('user', 'moderator', 'admin'))
-    - created_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    - updated_at: TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    - settings: NVARCHAR(MAX)
+    - role: NVARCHAR(20) CHECK (role IN ('user', 'moderator', 'admin'))
+    - created: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    - updated: TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 
 2. dbo.user_post
     - id: Integer (Primary Key)

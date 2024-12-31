@@ -23,13 +23,15 @@ const ChatWindow = ({ user, onClose }) => {
     }, [messages]);
 
     // Simulated function to send a message (replace with actual implementation)
-    const sendMessage = (e) => {
+    const sendMessage = async(e) => {
         console.log(inputMessage)
         e.preventDefault();
         if (inputMessage.trim() !== '') {
             setMessages([...messages, { text: inputMessage, sender: user }]);
             setInputMessage('');
             // Here you would typically send the message to your backend
+
+            await fetch("/api/")
         }
     };
 

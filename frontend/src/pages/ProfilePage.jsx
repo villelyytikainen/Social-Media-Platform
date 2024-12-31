@@ -5,7 +5,9 @@ import PostField from "../components/PostField";
 
 const ProfilePage = ({ user, posts }) => {
     console.log(user, posts)
-    const [userPosts, setUserPosts] = useState(posts.filter(post => post.user_id === user.id));
+    const [userPosts, setUserPosts] = useState(posts.filter(post => post.user_id === user.user_id));
+
+    console.log(user)
 
     const addNewPost = (newPost) => {
         setUserPosts([newPost, ...userPosts]);
@@ -18,7 +20,7 @@ const ProfilePage = ({ user, posts }) => {
                     <img src={user.pfp || "/default-profile-picture.png"} alt={user.name} className="profile-image"/>
                 </div>
                 <div className="profile-info">
-                    <h1>{user.name}</h1>
+                    <h1>{user.username}</h1>
                     <p>{user.bio || "No bio available"}</p>
                     <p>{user.location || "Location not specified"}</p>
                     <p>@{user.username}</p>

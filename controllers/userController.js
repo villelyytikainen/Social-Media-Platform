@@ -45,8 +45,19 @@ const createUser = async (req, res, next) => {
     }
 };
 
+const deleteUser = async (req, res, next) => {
+    try {
+        const { user_id } = req.body;
+        const deletedUser = db.deleteUser(user_id)
+        res.status(200).json(deletedUser);
+    } catch (error) {
+        next(error);
+    }
+};
+
 module.exports = {
     getAllUsers,
     getUserById,
     createUser,
+    deleteUser
 };
