@@ -47,11 +47,11 @@ const createUser = async (user) => {
             .request()
             .input("username", sql.NVarChar, user.username)
             .input("password", sql.NVarChar, user.password)
-            .input("created", sql.Date, user.created)
-            .input("updated", sql.Date, user.updated)
+            //.input("created", sql.Date, default)
+            //.input("updated", sql.Date, user.updated)
             .input("settings", sql.NVarChar, "{}")
             .input("role", sql.NVarChar, "user")
-            .query("INSERT INTO user_profile (username, password, created, updated, settings, role) VALUES (@username, @password, @created, @updated, @settings, @role)");
+            .query("INSERT INTO user_profile (username, password, settings, role) VALUES (@username, @password, @settings, @role)");
         return result.recordset;
     } catch (error) {
         console.error(error);

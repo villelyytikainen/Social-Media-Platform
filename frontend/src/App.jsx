@@ -29,6 +29,7 @@ function App() {
         fetchAuthStatus();
     }, []);
 
+
     const toggleChatWindow = (user) => {
         setOpenChats(prevChats => {
             const existingChat = prevChats.find(chat => chat.id === user.id);
@@ -51,7 +52,7 @@ function App() {
     ) : (
         <section id='App'>
             <Navbar setLoggedIn={setLoggedIn} />
-            <Home user={me}/>
+            <Home user={me} />
             <div className="chat-windows-container">
                 {openChats.map(user => (
                     <ChatWindow key={user.id} user={user} onClose={closeChat} />
