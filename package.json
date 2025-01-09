@@ -1,13 +1,12 @@
 {
   "name": "social-media-project",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Fullstack Social media application",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "build": "cd frontend && npm run build && cd.. && npm run dev"
+    "dev-build": "cd frontend && npm run build && cd.. && npm run dev"
   },
   "author": "Ville Lyytikäinen",
   "license": "MIT",
