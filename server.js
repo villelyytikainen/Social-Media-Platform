@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const cors = require("cors");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users");
 const postRoutes = require("./routes/posts");
@@ -19,17 +20,18 @@ app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "frontend/dist/index.html"));
 });
 
-const io = new Server(3008);
+// const io = new Server(3008);
 
-io.on("connection", (socket) => {
-    // send message to the client
-    socket.emit("hello", "world");
+// io.on("connection", (socket) => {
+//     // send message to the client
+//     socket.emit("hello", "world");
 
-    socket.on("howdy", (arg) => {
-        console.log(arg)
-    })
-})
+//     socket.on("howdy", (arg) => {
+//         console.log(arg)
+//     })
+// })
 
+app.use(cors());
 app.use(errorHandling);
 
 app.listen(process.env.DEV_PORT, () => {
