@@ -21,7 +21,7 @@ const Connection = require("tedious").Connection;
 
 const config = {
     server: process.env.SMA_SERVER,
-    port: process.env.PORT,
+    port: process.env.SMA_PORT,
     database: process.env.SMA_DB,
     authentication: {
         type: process.env.SMA_SQL_AUTH_TYPE
