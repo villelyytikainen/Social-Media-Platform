@@ -33,7 +33,7 @@ const createPost = async (req, res, next) => {
         console.log(user)
 
         const newPost = {
-            user_id: user.user_id,
+            user_id: user.id,
             title: "title",
             content: content,
             likes: 0,

@@ -20,11 +20,11 @@ const Connection = require("tedious").Connection;
 
 
 const config = {
-    server: aserver,
-    port: aport,
-    database: adatabase,
+    server: process.env.SMA_SERVER,
+    port: process.env.PORT,
+    database: process.env.SMA_DB,
     authentication: {
-        type: atype
+        type: process.env.SMA_SQL_AUTH_TYPE
     },
     options: {
         encrypt: true
@@ -34,15 +34,11 @@ const config = {
 const connection = async () => {
     try {
         const pool = sql.connect(config);
-        
+
         return pool;
     } catch (error) {
         console.log(error);
     }
 };
-
-
-
-connection();
 
 module.exports = connection;

@@ -29,9 +29,9 @@ const createPost = async (post) => {
             .input("user_id", sql.Int, post.user_id)
             .input("content", sql.Text, post.content)
             .input("visibility", sql.NVarChar, "public")
-            .input("created", sql.Date, post.created)
-            .input("updated", sql.Date, post.updated)
-            .query(`INSERT INTO user_post (user_id, post_content, visibility, created, updated) VALUES (@user_id, @content, @visibility, @created, @updated)`);
+            .input("created_at", sql.Date, post.created)
+            .input("updated_at", sql.Date, post.updated)
+            .query(`INSERT INTO user_post (user_id, post_content, visibility, created_at, updated_at) VALUES (@user_id, @content, @visibility, @created_at, @updated_at)`);
         return result.recordset;
     } catch (error) {
         throw new Error(error);

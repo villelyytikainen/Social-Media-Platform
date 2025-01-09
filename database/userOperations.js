@@ -16,6 +16,9 @@ const getAllUsers = async () => {
 const getUserByUsername = async (user) => {
     try {
         const pool = await connection();
+
+        console.log(pool);
+
         const result = await pool
         .request()
         .input("username", sql.NVarChar, user.username)

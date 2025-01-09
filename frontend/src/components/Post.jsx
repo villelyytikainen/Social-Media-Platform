@@ -4,7 +4,7 @@ import "../assets/styles/Post.css";
 
 const Post = ({ post }) => {
 
-    const { user_id, post_content, created, updated } = post;
+    const { user_id, post_content, created } = post;
 
     console.log(post)
     const [username, setUsername] = useState("");
@@ -35,7 +35,7 @@ const Post = ({ post }) => {
                 <p>{post_content}</p>
                 {/* <p>{updated_at.slice(0, 10)}</p> */}
             </div>
-            <span className="post-created">{created.slice(0, 10)}</span>
+            <span className="post-created">{created}</span>
         </li>
     );
 };
